@@ -2,16 +2,129 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Motion DK</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/homepage.css">
+	<link rel="stylesheet" href="icons/my-icons-collection/font/flaticon.css">
 </head>
 <body>
 	
-	<div id="navbar">
-		<div class="logo"></div>
-		<div class="nav"></div>
+	<!-- starting the navbar  -->
+	<div id="navBar">
+
+	 	<div class="container"> <!--this keeps everything at the center of the screen -->
+			<div class="navMain">
+				<div class="logo">
+					<a href="index.html" class="">
+						<img src="images/logo/logos-01.png" alt="">
+					</a>
+				</div>
+				<div class="nav">
+					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+					<ul id="navigation" class="collapse">
+						<li class="navItem active"><a href="index.html">Home</a></li>
+						<li class="navItem"><a href="pages/about.html">About</a></li>
+						<li class="navItem"><a href="pages/movies.html">Movies</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
 	</div>
+	<!-- Ending of navBar -->
+
+	<!-- The carousel silder -->
+	<div id="carouselMain">
+		
+		<div id="carousel">
+
+			<!--Cloning the last slide to the first for sliding effect  -->
+			<div class="carouselItem" id="lastClone">
+				<div class="title">
+					<span class="name">The Absent One</span>
+					<span class="genre">crime</span>
+				</div>
+				<img src="images/Movies/BannerImage/theabsentone.jpg" alt="">
+			</div>
+
+			<div class="carouselItem">
+				<div class="title">
+					<span class="name">A War</span>
+					<span class="genre">thriller</span>
+				</div>
+				<img src="images/Movies/BannerImage/awar.jpg" alt="">
+			</div>
+
+			<div class="carouselItem">
+				<div class="title">
+					<span class="name">A hijacking</span>
+					<span class="genre">thriller</span>
+				</div>
+				<img src="images/Movies/BannerImage/ahijacking.jpg" alt="">
+			</div>
+			
+			<div class="carouselItem">
+				<div class="title">
+					<span class="name">Festen</span>
+					<span class="genre">drama</span>
+				</div>
+				<img src="images/Movies/BannerImage/festen.jpg" alt="">
+			</div>
+			
+			<div class="carouselItem">
+				<div class="title">
+					<span class="name">Northwest</span>
+					<span class="genre">action</span>
+				</div>
+				<img src="images/Movies/BannerImage/northwest.jpg" alt="">
+			</div>
+			
+			<div class="carouselItem">
+				<div class="title">
+					<span class="name">the absent one</span>
+					<span class="genre">crime</span>
+				</div>
+				<img src="images/Movies/BannerImage/theabsentone.jpg" alt="">
+			</div>
+
+			<!--Cloning the first slide to the last for sliding effect  -->
+			<div class="carouselItem" id="firstClone"> 
+				<div class="title">
+					<span class="name">a war</span>
+					<span class="genre">thriller</span>
+				</div>
+				<img src="images/Movies/BannerImage/awar.jpg" alt="">
+			</div>
+
+		</div>
+
+		<button id="prevbtn" class="carouselBtn" onclick="gotoPrev()"><</button>
+		<button id="nextbtn" class="carouselBtn" onclick="gotoNext()">></button>
+
+	</div>
+	<!-- the carousel slider ends -->
+
+	<!-- the bottom section with general links -->
+
+	<div id="lastSection">
+		
+		<div class="generalLinks">
+			<a href="pages/history.html" class="">Danish film history</a>
+		</div>
+		<div class="generalLinks">
+			<a href="pages/about.html" class="">
+		Community suggestions</a>
+		</div>
+		<div class="generalLinks">
+			<a href="pages/genre.html" class="">Drama</a>
+			<span>: most popular danish genre</span>
+		</div>
+		
+		
+		
+	</div>
+
 
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/homepage.js"></script>

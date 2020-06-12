@@ -1,0 +1,182 @@
+
+:root
+{
+	--navBarColor : #383838;
+	--menuTextColor: #ba1818 ;
+}
+
+#carouselMain
+{
+	position: relative;
+	overflow-x: hidden;
+	/* since the immages are actulay kept side
+	by side for the slide effect */
+}
+
+#carousel
+{
+	position: relative;
+	z-index: -2; /* so that it stays behind the dropdown menu */
+	display: flex; 
+	width: 100vw;
+	transition: transform ease-out 0.6s; /* to make the slide effect */
+}
+
+/* this class is used when the slider comes back to the first of last 
+image without any transition */
+.noTransition
+{
+	transition: none !important;
+}
+
+#carousel .carouselItem
+{
+	position: relative;
+	min-width: 100vw;
+  	height: 90vh;
+  	overflow-y: hidden;
+}
+
+/* this creates a dark overlay */
+#carousel .carouselItem:after
+{
+	min-width: 100%;
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.5;
+}
+
+/* keeping the image in a good position */
+#carousel img
+{	
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+  	object-fit: contain;
+}
+
+/* the title for the movie */
+#carousel .carouselItem .title
+{
+	position: absolute;
+	top: 70%;
+	left: 5%;
+	z-index: 1;
+}
+
+/* movie name */
+#carousel .carouselItem .title .name
+{
+	display: block;
+	font-size: 32px;
+	color: #e8e8e8;
+	text-transform: capitalize;
+	font-weight: bold;
+	letter-spacing: 5px;
+	/* word-spacing: 8px; */
+}
+
+/* movie genre */
+#carousel .carouselItem .title .genre
+{
+	display: block;
+	font-size: 24px;
+	color: #c8c8c8;
+	text-transform: capitalize;
+}
+
+/* styling the carousel buttons */
+#carouselMain #prevbtn
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#carouselMain #nextbtn
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#carouselMain .carouselBtn
+{
+	height: 100%;
+	width: 10%;
+	background: none;
+	font-size: 30px;
+	color: #585858;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	z-index: 1;
+}
+
+/* the carousel part is done */
+
+#lastSection
+{
+	background-color: #181818;
+	color: var(--menuTextColor);
+	display: flex;
+	padding: 30px 0;
+}
+#lastSection .generalLinks
+{
+	padding: 30px;
+	text-align: center;
+	width: 30%;
+	margin: 0 auto;
+}
+
+#lastSection a
+{
+	color: var(--menuTextColor);
+}
+
+#lastSection a:hover
+{
+	color: #e8e8e8;
+}
+
+/* now making it responsive */
+@media screen and (max-width: 1080px ) {
+	
+	#carousel .carouselItem
+	{	
+	  	height: 65vh;
+	}
+}
+@media screen and (max-width: 768px ) {
+	
+	#carousel .carouselItem
+	{	
+	  	height: 45vh;
+	}
+	#lastSection
+	{
+		display: block;
+		padding: 0;
+	}
+	#carousel .carouselItem .title .name
+	{
+		font-size: 24px;
+	}
+	#carousel .carouselItem .title .genre
+	{
+		font-size: 18px;
+	}
+}
+@media screen and (max-width: 425px ) {
+	
+	#carousel .carouselItem
+	{	
+	  	height: 35vh;
+	}
+}

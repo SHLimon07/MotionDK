@@ -1,0 +1,153 @@
+
+/* This page contains the css that are common in all pages  */
+
+/* The CSS variables */
+:root
+{
+	--navBarColor : #383838;
+	--menuTextColor: #ba1818 ;
+}
+
+/* universal selector */
+*
+{
+	padding: 0;
+	margin: 0;
+	scroll-behavior: smooth;
+	font-family: sans-serif;
+}
+
+/* clearing the default styles on anchor tags and list tags */
+a,a:hover
+{
+	text-decoration: none;
+}
+
+ul,li
+{
+	list-style: none;
+}
+/* Since the navbar is going to be everywhere, I am keeping it here */
+/* this class keeps everything inside it to the centre of the main div */
+.container
+{
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+/* styles for the navbar */
+#navBar 
+{
+	width: 100%;
+	padding: 10px 0 ;
+	background-color: var(--navBarColor);
+	/* display: flex; */
+}
+
+#navBar .navMain
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#navBar .logo img
+{
+	width: 30%;
+	min-width: 100px;
+}
+
+ /*hides the menu toogling button on bigger screens*/
+.nav .menuHidden
+{
+	display: none;
+}
+
+/* thiss css applies when the items are collapsed or on bigger sceerns */
+.nav .collapse
+{
+	display: flex;
+	margin-left: auto;
+	box-sizing: border-box;
+	transition: all linear 0.3s;
+	letter-spacing: 3px;
+}
+
+#navigation .navItem a
+{
+	padding: 10px 10px;
+	color: var(--menuTextColor);
+	font-size: 16px;
+	font-weight: bold;
+	border-bottom-right-radius: 15px;
+	border-top-left-radius: 15px;
+	transition: all linear 0.3s;
+	margin: 0 5px;
+	text-transform: uppercase;
+}
+
+#navigation .navItem:hover a,#navigation .active a
+{
+	background: #fff;
+}
+
+
+/* Making the navBar responsive */
+@media screen and (max-width: 768px) {
+	
+	 /*hides the menu toogling button on bigger screens*/
+	.nav .menuHidden
+	{
+		letter-spacing: 3px;
+		text-align: left;
+		display: block;
+		cursor: pointer;
+		padding: 10px 10px;
+		color: var(--menuTextColor);
+		font-size: 16px;
+		font-weight: bold;
+		border-bottom-right-radius: 15px;
+		border-top-left-radius: 15px;
+		transition: all linear 0.3s;
+		margin: 0 5px;
+		text-transform: uppercase;
+	}
+	.menuHidden:hover
+	{
+		background-color: #fff;
+	}
+
+	/* thiss css applies when the items are collapsed or on bigger sceerns */
+	.nav .collapse
+	{
+		width: 100%;
+		transform: translateY(-130%);
+		left: 0;
+		position: absolute;
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+		box-sizing: border-box;
+		z-index: -1;
+		background-color: var(--navBarColor);
+	}
+	.bringToTop
+	{
+		z-index: 1 !important ;
+	}
+	.sendBack
+	{
+		z-index: -2!important;
+	}
+	/* this class will be toogled by javascript */
+	.navToogle
+	{
+		transform: translateY(5%)!important;
+	}
+
+	#navigation .navItem
+	{
+		margin: 25px 0;
+	}
+}
