@@ -116,16 +116,18 @@ image without any transition */
 
 #lastSection
 {
-	background-color: var(--navBarColor);
+	background-color: var(--normalBackground);
 	color: var(--menuTextColor);
 	display: flex;
 	padding: 30px 0;
+	justify-content: space-between;
 }
 #lastSection .generalLinks
 {
 	padding: 30px;
 	text-align: center;
 	width: 30%;
+	max-width: 150px;
 	margin: 0 auto;
 }
 

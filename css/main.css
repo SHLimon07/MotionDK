@@ -4,9 +4,10 @@
 /* The CSS variables */
 :root
 {
-	--navBarColor : #487eb0;
+	--navBarColor : #ccae62;
 	--menuTextColor: #e8e8e8;
 	--menuTextHoverColor: #ba1818;
+	--normalBackground: #181818; /* #487eb0; */
 }
 
 /* universal selector */
