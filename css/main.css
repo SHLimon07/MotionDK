@@ -4,8 +4,9 @@
 /* The CSS variables */
 :root
 {
-	--navBarColor : #383838;
-	--menuTextColor: #ba1818 ;
+	--navBarColor : #487eb0;
+	--menuTextColor: #e8e8e8;
+	--menuTextHoverColor: #ba1818;
 }
 
 /* universal selector */
@@ -90,6 +91,7 @@ ul,li
 #navigation .navItem:hover a,#navigation .active a
 {
 	background: #fff;
+	color: var(--menuTextHoverColor);
 }
 
 
@@ -116,6 +118,7 @@ ul,li
 	.menuHidden:hover
 	{
 		background-color: #fff;
+	color: var(--menuTextHoverColor);
 	}
 
 	/* thiss css applies when the items are collapsed or on bigger sceerns */

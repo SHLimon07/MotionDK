@@ -1,10 +1,4 @@
 
-:root
-{
-	--navBarColor : #383838;
-	--menuTextColor: #ba1818 ;
-}
-
 #carouselMain
 {
 	position: relative;
@@ -122,7 +116,7 @@ image without any transition */
 
 #lastSection
 {
-	background-color: #181818;
+	background-color: var(--navBarColor);
 	color: var(--menuTextColor);
 	display: flex;
 	padding: 30px 0;
@@ -143,6 +137,7 @@ image without any transition */
 #lastSection a:hover
 {
 	color: #e8e8e8;
+	color: var(--menuTextHoverColor);
 }
 
 /* now making it responsive */

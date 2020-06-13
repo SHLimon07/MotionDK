@@ -11,6 +11,7 @@ section relative to it */
 	width: 100%;
 	position: relative;
 	height: 40vw; /* settting the height according to width makes it responsive */
+	z-index: -2;
 }
 #banner img
 {
@@ -25,8 +26,8 @@ section relative to it */
 #banner .title
 {
 	position: absolute;
-	padding-top: 15vw;
-	left: 10%;
+	padding-top: 25vw;
+	left: 5%;
 	z-index: 1;
 }
 
