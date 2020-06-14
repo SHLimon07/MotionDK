@@ -73,30 +73,87 @@ section relative to it */
 	padding-top: 50px;
 }
 
-.ContentBody .textContent
+/* styling genreDiv */
+
+#genreDiv
 {
-	padding: 10px;
+	background-color: rgba(204, 174, 98, 0.2);
+	border-radius: 15px;
+	border: 1px solid #fff;
+	margin: 20px 0;
 }
 
-.ContentBody .textContent .title
+#genreDiv .genreName
 {
-	padding-bottom: 10px;
-	letter-spacing: 2px;
-	width: 80%;
-	margin:0 auto;
+	display: block;
+	text-align: center;
+	padding: 10px;
+	cursor: pointer;
+	text-transform: capitalize;
 }
-.ContentBody .textContent .text
+
+#genreDiv .genreName:hover
 {
-	opacity: 0.8;
-	font-size: 14px;
-	line-height: 20px;
-	width: 80%;
+	background-color: #ccae62;
+}
+
+#genreDiv .genreName:hover:first-child
+{
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+}
+
+#genreDiv .genreName:hover:last-child
+{
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+#genreWiseList
+{
+	padding-top: 30px;
+}
+
+.listTitle
+{
+	display: block;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	padding: 5px;
+	margin: 10px 0;
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+.movieList
+{
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(150px, 1fr));
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+.card
+{
 	margin: 0 auto;
+	width: 100%;
+}
+
+.card img
+{
+	width: 100%;
+	object-fit: cover;
+}
+.card .title span
+{
+	display: block;
 }
 
 /* making the layout responsive */
 
-@media screen and (min-width: 768px ) {
+@media screen and (min-width: 770px ) {
 	
 	.ContentBody
 	{
@@ -104,26 +161,35 @@ section relative to it */
 		justify-content: space-around;
 	}
 	
-	.ContentBody .textContent
+	.ContentBody #genreDiv
 	{
-		padding-top: 30px;
-		width: 45%;
-		margin: 0 auto;
+		width: 200px;
+		height: auto;
+	}
+	.ContentBody #movieListContainer
+	{
+		width: 70%;
+	}
+	.listTitle
+	{
+		font-size: 20px;
+	}
+
+	#genreDiv
+	{
+		justify-content: center;
+	}
+
+	#genreDiv .genreName:hover:last-child
+	{
+		border-radius: 0;
 	}
 }
-@media screen and (max-width: 425px ) {
-	
-	.ContentBody .textContent .title , .ContentBody .textContent .text
+@media screen and (max-width: 1080px ) and (min-width: 768px) {
+
+	.ContentBody #movieListContainer
 	{
-		width: 100%;
+		width: 60%;
 	}
-	#banner .title span
-	{
-		padding: 5px 0;
-		font-size: 12px;
-		font-weight: bold;
-		color: #d8d8d8;
-	}
+
 }
-
-
