@@ -7,7 +7,7 @@ section relative to it */
 	width: 70vw;
 }
 
-.textContentBody
+.ContentBody
 {
 	background-color: var(--normalBackground);
 }
@@ -32,7 +32,7 @@ section relative to it */
 #banner .title
 {
 	position: absolute;
-	padding-top: 25vw;
+	padding-top: 30vw;
 	left: 5%;
 	z-index: 1;
 }
@@ -40,9 +40,13 @@ section relative to it */
 #banner .title span
 {
 	display: block;
-	padding: 10px 0;
+	padding: 10px;
 	font-size: 3vw;
-	color: #d8d8d8;
+	color: #fff;
+	background-color: #151515;
+	border-radius: 15px;
+	opacity: 0.8;
+	/* background-blend-mode: screen; */
 }
 
 /* creating an overlay over the banner image */
@@ -61,7 +65,7 @@ section relative to it */
 
 /* styling the text content section */
 
-.textContentBody
+.ContentBody
 {
 	background-color: var(--normalBackground);
 	color: var(--menuTextColor);
@@ -69,19 +73,19 @@ section relative to it */
 	padding-top: 50px;
 }
 
-.textContentBody .textContent
+.ContentBody .textContent
 {
 	padding: 10px;
 }
 
-.textContentBody .textContent .title
+.ContentBody .textContent .title
 {
 	padding-bottom: 10px;
 	letter-spacing: 2px;
 	width: 80%;
 	margin:0 auto;
 }
-.textContentBody .textContent .text
+.ContentBody .textContent .text
 {
 	opacity: 0.8;
 	font-size: 14px;
@@ -94,13 +98,13 @@ section relative to it */
 
 @media screen and (min-width: 768px ) {
 	
-	.textContentBody
+	.ContentBody
 	{
 		display: flex;
 		justify-content: space-around;
 	}
 	
-	.textContentBody .textContent
+	.ContentBody .textContent
 	{
 		padding-top: 30px;
 		width: 45%;
@@ -109,7 +113,7 @@ section relative to it */
 }
 @media screen and (max-width: 425px ) {
 	
-	.textContentBody .textContent .title , .textContentBody .textContent .text
+	.ContentBody .textContent .title , .ContentBody .textContent .text
 	{
 		width: 100%;
 	}

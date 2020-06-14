@@ -33,7 +33,7 @@ ul,li
 /* this class keeps everything inside it to the centre of the main div */
 .container
 {
-	width: 80%;
+	width: 70vw;
 	margin: 0 auto;
 }
 
