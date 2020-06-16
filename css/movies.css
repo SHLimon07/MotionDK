@@ -75,15 +75,16 @@ section relative to it */
 
 /* styling genreDiv */
 
-#genreDiv
+#genreList
 {
 	background-color: rgba(204, 174, 98, 0.2);
 	border-radius: 15px;
 	border: 1px solid #fff;
 	margin: 20px 0;
+	overflow: hidden;
 }
 
-#genreDiv .genreName
+#genreList .genreName
 {
 	display: block;
 	text-align: center;
@@ -92,21 +93,9 @@ section relative to it */
 	text-transform: capitalize;
 }
 
-#genreDiv .genreName:hover
+#genreList .genreName:hover
 {
 	background-color: #ccae62;
-}
-
-#genreDiv .genreName:hover:first-child
-{
-	border-top-right-radius: 15px;
-	border-top-left-radius: 15px;
-}
-
-#genreDiv .genreName:hover:last-child
-{
-	border-bottom-right-radius: 15px;
-	border-bottom-left-radius: 15px;
 }
 
 #genreWiseList
@@ -164,7 +153,6 @@ section relative to it */
 	.ContentBody #genreDiv
 	{
 		width: 200px;
-		height: auto;
 	}
 	.ContentBody #movieListContainer
 	{
@@ -175,15 +163,6 @@ section relative to it */
 		font-size: 20px;
 	}
 
-	#genreDiv
-	{
-		justify-content: center;
-	}
-
-	#genreDiv .genreName:hover:last-child
-	{
-		border-radius: 0;
-	}
 }
 @media screen and (max-width: 1080px ) and (min-width: 768px) {
 

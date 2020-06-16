@@ -50,8 +50,6 @@ async function carouselInit()
 	//convert the coma separated genre values to an array
 	yearSortedData = convertGenre(yearSortedData);
 
-	console.log(yearSortedData);
-
 	//getting the latest 5 movies from the sorted data
 	carouselData = getLatestData(yearSortedData,5);
 

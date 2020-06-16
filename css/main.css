@@ -29,6 +29,12 @@ ul,li
 {
 	list-style: none;
 }
+
+body 
+{
+	background: linear-gradient(to left,#787878, #181818 30vw, #181818 70vw, #787878 100vw);
+	background-repeat: no-repeat;
+}
 /* Since the navbar is going to be everywhere, I am keeping it here */
 /* this class keeps everything inside it to the centre of the main div */
 .container
