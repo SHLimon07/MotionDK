@@ -48,7 +48,7 @@ async function carouselInit()
 	yearSortedData =  sortData(dataSheet);
 
 	//convert the coma separated genre values to an array
-	//yearSortedData = convertGenre(yearSortedData);
+	yearSortedData = convertGenre(yearSortedData);
 
 	console.log(yearSortedData);
 
@@ -91,33 +91,11 @@ function convertGenre(data) {
 	var len = data.length;
 	for(var i=0;i<len;i++)
 	{
-		data[i].gsx$genre.$t = getTheArray(data[i].gsx$genre.$t);
+		data[i].gsx$genre.$t = data[i].gsx$genre.$t.split(',');
 	}
 	return data;
 }
 
-function getTheArray(data) {
-	var temp = [];
-	var array = [];
-	var p=0;
-	var index=0;
-	var j=0;
-	while(data[j]!=null)
-	{
-		if(data[j]==',')
-		{
-			p=0;
-			j+=2;
-			array[index]=temp;
-			index++;
-			continue;
-		}
-		temp[p]=data[j];
-		p++;
-		j++;
-	}
-	return array; 
-}
 
 function getLatestData(data,max)
 {
