@@ -1,21 +1,152 @@
 //images/Movies/BannerImage/theabsentone.jpg
+
 // Getting the elements from HTML
 const carousel = document.getElementById('carousel');
-var carouselCounter = 1;
 const carouselItems = Array.from(carousel.children);
 const size = carouselItems.length;
-console.log(carouselItems);
 
+//fetching data by each file, since many browsers don't support import/export
+//The data are taken from this google sheet - https://docs.google.com/spreadsheets/d/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/edit#gid=0
+//And the data are fetched using this link - https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json
+
+//data variables
+var dataSheet;
+var yearSortedData;
+var carouselData = [];
+
+//function calls
+
+//iniializing the carousel according to data
+carouselInit();
 //since initialy the slider is on the postion of the last clone
 gotoFirst();
 
-setInterval(autoPlay, 2500);
 
 
-async function carouselInit() {
-	// Initializes the carousel using the spreadsheet data
+async function fetching () {
+	//this function fetches the api from google sheet as json 
 
+	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
+	dataSheet = await response.json();
 }
+
+
+//Now initializing the atributes using fetched data
+async function carouselInit()
+{
+	//hidding the carousel div untill the data is fetched
+	carousel.style.display = 'none';
+
+	//first I have to fetch the data
+	await fetching();
+
+	//since I only need the enties
+	dataSheet = dataSheet.feed.entry;
+
+	//sorting the data according to year
+	//the carousel will show the latest 5 movies 
+	yearSortedData =  sortData(dataSheet);
+
+	//convert the coma separated genre values to an array
+	//yearSortedData = convertGenre(yearSortedData);
+
+	console.log(yearSortedData);
+
+	//getting the latest 5 movies from the sorted data
+	carouselData = getLatestData(yearSortedData,5);
+
+	//setting the attributes of the html carousel elements
+	carouselSet(carouselData);
+
+	//showing the carousel div after the data is fetched
+	carousel.style.display = 'flex';
+
+	//starting the autoplay 
+	setInterval(autoPlay, 2500);
+}
+
+function sortData (data) {
+	// this function sorts the fetched data using bubble sort 
+	var temp;
+	var size = data.length;
+	var sortedData = data;
+	for(var i=0;i<size-1;i++)
+	{
+		for(var j=i;j<size;j++)
+		{
+			// if the year of current index is smaller than the compared index -> swap them
+			if(sortedData[i].gsx$year.$t<sortedData[j].gsx$year.$t)
+			{
+				temp = sortedData[i];
+				sortedData[i] = sortedData[j];
+				sortedData[j] = temp; 
+			}
+		}
+	}
+	return sortedData;
+}
+
+function convertGenre(data) {
+	
+	var len = data.length;
+	for(var i=0;i<len;i++)
+	{
+		data[i].gsx$genre.$t = getTheArray(data[i].gsx$genre.$t);
+	}
+	return data;
+}
+
+function getTheArray(data) {
+	var temp = [];
+	var array = [];
+	var p=0;
+	var index=0;
+	var j=0;
+	while(data[j]!=null)
+	{
+		if(data[j]==',')
+		{
+			p=0;
+			j+=2;
+			array[index]=temp;
+			index++;
+			continue;
+		}
+		temp[p]=data[j];
+		p++;
+		j++;
+	}
+	return array; 
+}
+
+function getLatestData(data,max)
+{
+	var latest = [];
+
+	latest[0]=data[max-1];//keeping the clone of last data
+	for(var i=0;i<max;i++)
+	{
+		latest[i+1]=data[i];
+	}
+	latest[max+1]=data[0];//keeping the clone of first data
+
+	return latest;
+}
+
+function carouselSet (data) {
+	
+	for(i=0;i<size;i++)
+	{
+		// console.log()
+		carousel.children[i].children[1].src="images/Movies/BannerImage/" + data[i].gsx$photo.$t;
+		// console.log(carousel.children[i].children[0]);
+		carousel.children[i].children[0].children[0].textContent=data[i].gsx$name.$t;
+		carousel.children[i].children[0].children[1].textContent=data[i].gsx$genre.$t[0];
+	}
+}
+
+//initializilng done;
+
 
 function autoPlay()
 {
@@ -26,6 +157,7 @@ function autoPlay()
 function gotoFirst()
 {
 	//takes the slider straight to the first image, without any sliding effect to create the loop
+	carouselCounter=1;
 	carousel.classList.add('noTransition');
 	carousel.style.transform = 'translateX(-100vw)';
 }
@@ -33,6 +165,7 @@ function gotoFirst()
 function gotoLast()
 {
 	//takes the slider straight to the last image, without any sliding effect to create the loop
+	carouselCounter=size-2;
 	carousel.classList.add('noTransition');
 	carousel.style.transform += 'translateX(-' + (size-2)*100 + 'vw)';
 }
@@ -69,12 +202,11 @@ function checkIf()
 	{
 		if(carouselItems[carouselCounter].id=="firstClone")
 		{
-			carouselCounter=1;
+			
 			gotoFirst();//to create the loop effect
 		}
 		else if(carouselItems[carouselCounter].id=="lastClone")
 		{
-			carouselCounter=size-2;
 			gotoLast();//to create the loop effect
 		}
 	});

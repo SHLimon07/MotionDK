@@ -5,7 +5,7 @@ var dataSheet;
 var yearWiseData;
 main();
 
-
+// export {dataSheet,yearWiseData};
 
 
 
@@ -47,4 +47,6 @@ function sortData () {
 		}
 	}
 }
+
+
 

@@ -13,7 +13,7 @@
 	z-index: -2; /* so that it stays behind the dropdown menu */
 	display: flex; 
 	width: 100vw;
-	transition: transform ease-out 0.6s; /* to make the slide effect */
+	transition: all ease-out 0.6s; /* to make the slide effect */
 }
 
 /* this class is used when the slider comes back to the first of last 
@@ -51,7 +51,8 @@ image without any transition */
 	top: 0;
 	left: 0;
 	width: 100%;
-  	object-fit: contain;
+	height: 100%;
+  	object-fit: cover;
 }
 
 /* the title for the movie */
@@ -175,5 +176,14 @@ image without any transition */
 	#carousel .carouselItem
 	{	
 	  	height: 35vh;
+	}
+	#carousel .carouselItem .title .name
+	{
+		font-size: 18px;
+	}
+	#carousel .carouselItem .title .genre
+	{
+		display: none;
+		font-size: 14px;
 	}
 }
