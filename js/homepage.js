@@ -1,14 +1,21 @@
-
+//images/Movies/BannerImage/theabsentone.jpg
 // Getting the elements from HTML
 const carousel = document.getElementById('carousel');
 var carouselCounter = 1;
 const carouselItems = Array.from(carousel.children);
 const size = carouselItems.length;
+console.log(carouselItems);
 
 //since initialy the slider is on the postion of the last clone
 gotoFirst();
 
 setInterval(autoPlay, 2500);
+
+
+async function carouselInit() {
+	// Initializes the carousel using the spreadsheet data
+
+}
 
 function autoPlay()
 {

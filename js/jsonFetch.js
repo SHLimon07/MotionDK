@@ -27,8 +27,6 @@ async function main()
 
 	sortData();
 
-	console.log(yearWiseData);
-
 }
 
 function sortData () {
