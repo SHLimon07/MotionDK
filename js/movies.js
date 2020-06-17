@@ -81,26 +81,26 @@ function sortData (data) {
 }
 
 function convertGenre(data) {
-	
+	//this function converts the coma separated values in genre feild to an array
 	var len = data.length;
 	for(var i=0;i<len;i++)
 	{
-		data[i].gsx$genre.$t = data[i].gsx$genre.$t.split(', ');
+		data[i].gsx$genre.$t = data[i].gsx$genre.$t.split(', ');//using ', ' as the separator
 	}
 	return data;
 }
 
 function createGenreList(data) {
 	
-	var dataSize = data.length;
-	var list = [];
+	var list = [];//this array contains the name of all genres from the spreadsheet
 
-	for(var i=0;i<dataSize;i++)
+	for(var i=0;i<data.length;i++)
 	{
 		var genreSize = data[i].gsx$genre.$t.length;
+
 		for(var j=0;j<genreSize;j++)
 		{
-			if(notIncluded(data[i].gsx$genre.$t[j],list))
+			if(notIncluded(data[i].gsx$genre.$t[j],list))//checking if the genre is already in the list
 				list.push(data[i].gsx$genre.$t[j]);
 		}
 	}
@@ -109,10 +109,10 @@ function createGenreList(data) {
 }
 
 function notIncluded(string, array) {
-	
-	var arraySize = array.length;
 
-	for(var i=0;i<arraySize;i++)
+	//searches for the given string in the array
+
+	for(var i=0;i<array.length;i++)
 	{
 		if(array[i]==string)
 			return 0;
@@ -128,6 +128,7 @@ function genreListInit(list) {
 
 	for(var i=0;i<list.length;i++)
 	{
+		//creating the span of genre
 		var genre = document.createElement('span');
 		genreDiv.appendChild(genre);
 		genre.textContent = list[i];
@@ -141,6 +142,7 @@ function createMovieCards(data,div,length) {
 	
 	//getting the main div where the cards will be appended
 	const movieList = document.querySelector('#'+div+' .movieList');
+
 	for(i=0;i<length;i++)
 	{
 		createCard(data[i],movieList,div);
@@ -163,13 +165,14 @@ function createCard(data,parent,div) {
 	dname.classList.add('dname');
 	dname.title = 'Director'
 
+	//appending the elements to its parent
 	parent.appendChild(card);
 	card.appendChild(image);
 	card.appendChild(title);
 	title.appendChild(name);
 	title.appendChild(dname);
 
-	if(div == 'recomendList' )
+	if(div == 'recomendList' )//no classlist needed for the genre list, since it is not going to be filtered
 		return ;
 	addGenreClasses(card,data.gsx$genre.$t);
 }
@@ -213,6 +216,16 @@ function filterList(target,parent)
 	
 	listTitle.textContent=target;
 	bannerTitle.textContent=target;
+
+	for(var i=0;i<dataSheet.length;i++)
+	{
+		var genreSize = dataSheet[i].gsx$genre.$t.length;
+		for(var j=0;j<genreSize;j++)
+		if(dataSheet[i].gsx$genre.$t[j]==target)
+		{
+			bannerImage.src = '../images/Movies/BannerImage/'+ dataSheet[i].gsx$photo.$t;
+		}
+	}
 
 	hide(compDiv);
 

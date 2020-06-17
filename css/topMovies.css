@@ -1,13 +1,9 @@
-/* styling the banner section */
-/* first need to make the position of the elements under the banner 
-section relative to it */
-
 .container
 {
 	width: 70vw;
 }
 
-.ContentBody
+.textContentBody
 {
 	background-color: var(--normalBackground);
 }
@@ -40,15 +36,10 @@ section relative to it */
 #banner .title span
 {
 	display: block;
-	padding: 10px;
+	padding: 10px 0;
 	font-size: 3vw;
-	color: #fff;
-	background-color: rgba(204, 174, 98, 0.2);
-	border-radius: 15px;
-	opacity: 0.8;
-	text-transform: capitalize;
-	border: 1px solid rgba(204, 174, 98, 0.5);
-	/* background-blend-mode: screen; */
+	color: rgba(204, 174, 98, 0.8);
+	text-shadow: -2px 1px 5px #000;
 }
 
 /* creating an overlay over the banner image */
@@ -65,8 +56,8 @@ section relative to it */
 	z-index: 1;
 }
 
-/* styling the text content section */
 
+/* styling content body */
 .ContentBody
 {
 	background-color: var(--normalBackground);
@@ -75,32 +66,9 @@ section relative to it */
 	padding-top: 50px;
 }
 
-/* styling genreDiv */
 
-#genreList
-{
-	background-color: rgba(204, 174, 98, 0.2);
-	border-radius: 15px;
-	border: 1px solid rgba(204, 174, 98, 0.5);
-	margin: 20px 0;
-	overflow: hidden;
-}
 
-#genreList .genreName
-{
-	display: block;
-	text-align: center;
-	padding: 10px;
-	cursor: pointer;
-	text-transform: capitalize;
-}
-
-#genreList .genreName:hover, #genreList .genreName.active
-{
-	background-color: #ccae62;
-}
-
-#completeList
+#topList
 {
 	padding-top: 30px;
 }
@@ -115,13 +83,14 @@ section relative to it */
 	text-transform: capitalize;
 	font-weight: bold;
 	font-size: 17px;
+	text-align: center;
 }
 
 .movieList
 {
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(auto-fill,150px);
+	grid-template-columns: repeat(auto-fill,250px);
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 	/* justify-content: space-between; */
@@ -141,7 +110,7 @@ section relative to it */
 {
 	border-radius: 5%;
 	width: 100%;
-	height: 225px;
+	height: 350px;
 	object-fit: cover;
 }
 .card .title span
@@ -156,7 +125,7 @@ section relative to it */
 	letter-spacing: 3px;
 }
 
-.card .title .dname
+.card .title .gname
 {
 	color: #a8a8a8;
 	letter-spacing: 1px;
@@ -167,26 +136,7 @@ section relative to it */
 /* making the layout responsive */
 
 @media screen and (min-width: 770px ) {
-	
-	.ContentBody
-	{
-		display: grid;
-		grid-template-columns: 200px 10% 1fr;
-		justify-content: space-around;
-		grid-row-gap: 30px;
-	}
-	
-	.ContentBody #genreDiv
-	{
-		grid-column: 1/2;
-		grid-row-start: 1;
-		grid-row-end: 4;
-	}
-	.ContentBody #recomendList, .ContentBody #completeList
-	{
-		padding-top: 0;
-		grid-column: 3/4;
-	}
+
 	.listTitle
 	{
 		font-size: 20px;

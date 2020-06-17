@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>About - Motion DK</title>
+		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../css/topMovies.css">
+	</head>
+	<body>
+		
+		<!-- starting the navbar  -->
+		<div id="navBar">
+			<div class="container"> <!--this keeps everything at the center of the screen -->
+			<div class="navMain">
+				<div class="logo">
+					<a href="../index.html" class="">
+						<img src="../images/logo/logos-01.png" alt="">
+					</a>
+				</div>
+				<div class="nav">
+					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+					<ul id="navigation" class="collapse">
+						<li class="navItem"><a href="../index.html">Home</a></li>
+						<li class="navItem"><a href="about.html">About</a></li>
+						<li class="navItem"><a href="movies.html">Movies</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Ending of navBar -->
+	
+	<!-- Everything inside a container -->
+	<div class="container">
+		<!-- Banner Image -->
+		<div id="banner">
+			<img src="../images/Movies/BannerImage/northwest.jpg" alt="">
+			<div class="title">
+				<span>Oplev en del af dansk kultur</span>
+			</div>
+		</div>
+		<!-- banner section done -->
+		
+		<div class="ContentBody">
+			
+			<div id="topList" >
+				<span class="listTitle">Top movies</span>
+
+				<div class="movieList">
+					<!-- elements will be added by javascript, using data -->
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/topMovies.js"></script>
+</body>
+</html>
