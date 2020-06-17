@@ -46,6 +46,7 @@ section relative to it */
 	background-color: #151515;
 	border-radius: 15px;
 	opacity: 0.8;
+	text-transform: capitalize;
 	/* background-blend-mode: screen; */
 }
 
@@ -69,7 +70,7 @@ section relative to it */
 {
 	background-color: var(--normalBackground);
 	color: var(--menuTextColor);
-	padding: 10px;
+	/* padding: 10px; */
 	padding-top: 50px;
 }
 
@@ -98,7 +99,7 @@ section relative to it */
 	background-color: #ccae62;
 }
 
-#genreWiseList
+#completeList
 {
 	padding-top: 30px;
 }
@@ -119,25 +120,43 @@ section relative to it */
 {
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(auto-fit,minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fit,150px);
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	/* justify-content: space-between; */
+	position: relative;
+	overflow: hidden;
 }
 
 .card
 {
 	margin: 0 auto;
 	width: 100%;
+	transition: all linear 0.3s;
 }
 
 .card img
 {
+	border-radius: 5%;
 	width: 100%;
 	object-fit: cover;
 }
 .card .title span
 {
+	margin: 5px 0;
 	display: block;
+	overflow: hidden;
+}
+
+.card .title .name
+{
+	letter-spacing: 3px;
+}
+
+.card .title .genre
+{
+	color: #a8a8a8;
+	letter-spacing: 1px;
 }
 
 /* making the layout responsive */

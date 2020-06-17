@@ -32,8 +32,15 @@ ul,li
 
 body 
 {
-	background: linear-gradient(to left,#787878, #181818 30vw, #181818 70vw, #787878 100vw);
-	background-repeat: no-repeat;
+	background-color: var(--normalBackground);
+
+	/* background: 
+	-webkit-linear-gradient(right, #787878, #181818 30vw, #181818 70vw, #787878 100vw);
+	background: 
+	-o-linear-gradient(right, #787878, #181818 30vw, #181818 70vw, #787878 100vw);
+	background: 
+	linear-gradient(to left, #787878, #181818 30vw, #181818 70vw, #787878 100vw);
+	background-repeat: no-repeat; */
 }
 /* Since the navbar is going to be everywhere, I am keeping it here */
 /* this class keeps everything inside it to the centre of the main div */

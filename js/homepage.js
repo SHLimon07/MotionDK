@@ -16,23 +16,16 @@ var carouselData = [];
 
 //function calls
 
-//iniializing the carousel according to data
-carouselInit();
+//calling the main function
+homePageMain();
 //since initialy the slider is on the postion of the last clone
 gotoFirst();
 
 
 
-async function fetching () {
-	//this function fetches the api from google sheet as json 
-
-	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
-	dataSheet = await response.json();
-}
-
 
 //Now initializing the atributes using fetched data
-async function carouselInit()
+async function homePageMain()
 {
 	//hidding the carousel div untill the data is fetched
 	carousel.style.display = 'none';
@@ -54,13 +47,22 @@ async function carouselInit()
 	carouselData = getLatestData(yearSortedData,5);
 
 	//setting the attributes of the html carousel elements
-	carouselSet(carouselData);
+	carouselInit(carouselData);
 
 	//showing the carousel div after the data is fetched
 	carousel.style.display = 'flex';
 
 	//starting the autoplay 
 	setInterval(autoPlay, 2500);
+}
+
+
+
+async function fetching () {
+	//this function fetches the api from google sheet as json 
+
+	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
+	dataSheet = await response.json();
 }
 
 function sortData (data) {
@@ -89,7 +91,7 @@ function convertGenre(data) {
 	var len = data.length;
 	for(var i=0;i<len;i++)
 	{
-		data[i].gsx$genre.$t = data[i].gsx$genre.$t.split(',');
+		data[i].gsx$genre.$t = data[i].gsx$genre.$t.split(', ');
 	}
 	return data;
 }
@@ -109,7 +111,7 @@ function getLatestData(data,max)
 	return latest;
 }
 
-function carouselSet (data) {
+function carouselInit(data) {
 	
 	for(i=0;i<size;i++)
 	{
