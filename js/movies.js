@@ -1,5 +1,3 @@
-const genreListDiv = document.getElementById('genreList');
-
 //fetching data by each file, since many browsers don't support import/export
 //The data are taken from this google sheet - https://docs.google.com/spreadsheets/d/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/edit#gid=0
 //And the data are fetched using this link - https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json
@@ -9,7 +7,7 @@ var dataSheet;
 var yearSortedData;
 var genreList = [];
 
-//function calls
+const genreListDiv = document.getElementById('genreList');
 
 //calling the main funtion
 moviesPageMain();
@@ -24,8 +22,6 @@ async function moviesPageMain()
 	//first I have to fetch the data
 	await fetching();
 
-	//gets the genre to be filterd
-	getTarget();
 
 	//since I only need the enties
 	dataSheet = dataSheet.feed.entry;
@@ -38,6 +34,21 @@ async function moviesPageMain()
 
 	//getting the set of unique genres from the data sheet
 	genreList = createGenreList(dataSheet);
+
+	//initializing the genreList in html
+	genreListInit(genreList);
+
+	//creating the movie cards for genre wise list
+	createMovieCards(dataSheet,'completeList',dataSheet.length);
+
+	//creating the cards of recomended movies [latest 5 movies]
+	createMovieCards(yearSortedData,'recomendList',3)
+
+	//initialing with drama genre
+	filterList('drama',genreListDiv);
+
+	//gets the genre to be filterd
+	getTarget();
 }
 
 async function fetching () {
@@ -47,63 +58,6 @@ async function fetching () {
 	dataSheet = await response.json();
 }
 
-function getTarget() {
-	
-	genreSize = genreListDiv.children.length;
-
-	for(var i=0;i<genreSize;i++)
-	{
-		genreListDiv.children[i].addEventListener('click',function(){
-			var target = this.getAttribute('id');
-			filterList(target);
-		});
-	} 
-}
-
-function filterList(target)
-{
-	const recomDiv = document.querySelector('#recomendList .movieList');//getting the div of recomened movies list
-	const compDiv = document.querySelector('#completeList .movieList');//getting the div of complete movies list
-	const listTitle = document.querySelector('#completeList .listTitle');//getting the title of complte movie list
-	const bannerTitle = document.querySelector('#banner .title span');//getting the title of the banner
-	const bannerImage = document.querySelector('#banner img');//getting the image of the banner
-	
-	listTitle.textContent=target;
-	bannerTitle.textContent=target;
-
-	hide(recomDiv);
-	hide(compDiv);
-
-	var recomShow = recomDiv.querySelectorAll('.'+target);
-	var compShow = compDiv.querySelectorAll('.'+target);
-
-	show(recomShow);
-	show(compShow);
-
-}
-
-function hide(div) {
-	var divSize = div.children.length;
-
-	for(var i=0;i<divSize;i++)
-	{
-		div.children[i].style.opacity = '0';
-		div.children[i].style.position = 'absolute';
-		div.children[i].style.width = '0%';
-
-	}
-}
-
-function show(div) {
-	var divSize = div.length;
-
-	for(var i=0;i<divSize;i++)
-	{
-		div[i].style.position = 'relative';
-		div[i].style.width = '100%';
-		div[i].style.opacity = '1';
-	}
-}
 
 function sortData (data) {
 	// this function sorts the fetched data using bubble sort 
@@ -137,8 +91,6 @@ function convertGenre(data) {
 }
 
 function createGenreList(data) {
-
-	console.log(data);
 	
 	var dataSize = data.length;
 	var list = [];
@@ -152,7 +104,7 @@ function createGenreList(data) {
 				list.push(data[i].gsx$genre.$t[j]);
 		}
 	}
-	console.log(list);
+	return list;
 
 }
 
@@ -168,4 +120,129 @@ function notIncluded(string, array) {
 
 	return 1;
 }
+
+function genreListInit(list) {
+	
+	//getting the main div for genre list
+	const genreDiv = document.querySelector('#genreList');
+
+	for(var i=0;i<list.length;i++)
+	{
+		var genre = document.createElement('span');
+		genreDiv.appendChild(genre);
+		genre.textContent = list[i];
+		genre.id = list[i];
+		genre.classList.add('genreName');
+
+	}
+}
+
+function createMovieCards(data,div,length) {
+	
+	//getting the main div where the cards will be appended
+	const movieList = document.querySelector('#'+div+' .movieList');
+	for(i=0;i<length;i++)
+	{
+		createCard(data[i],movieList,div);
+	}
+}
+
+function createCard(data,parent,div) {
+	
+	var card = document.createElement('div');
+	card.classList.add('card');
+	var image = document.createElement('img');
+	image.src = "../images/Movies/CardImage/" + data.gsx$photo.$t;
+	var title = document.createElement('div');
+	title.classList.add('title');
+	var name = document.createElement('span');
+	name.textContent = data.gsx$name.$t;
+	name.classList.add('name');
+	var dname = document.createElement('span');
+	dname.textContent = data.gsx$director.$t;
+	dname.classList.add('dname');
+	dname.title = 'Director'
+
+	parent.appendChild(card);
+	card.appendChild(image);
+	card.appendChild(title);
+	title.appendChild(name);
+	title.appendChild(dname);
+
+	if(div == 'recomendList' )
+		return ;
+	addGenreClasses(card,data.gsx$genre.$t);
+}
+
+function addGenreClasses (element,list) {
+	
+	for(var i=0;i<list.length;i++)
+	{
+		element.classList.add(list[i]);
+	}
+}
+
+function getTarget() {
+	
+	genreSize = genreListDiv.children.length;
+
+	
+	for(var i=0;i<genreSize;i++)
+	{
+		genreListDiv.children[i].addEventListener('click',function(){
+
+			var target = this.getAttribute('id');
+			filterList(target,genreListDiv);
+		});
+	} 
+}
+
+function filterList(target,parent)
+{
+	for(var i=0;i<parent.children.length;i++)
+	{
+		parent.children[i].classList.remove('active');
+		if(parent.children[i].id==target)
+			parent.children[i].classList.add('active');
+
+	} 
+	const compDiv = document.querySelector('#completeList .movieList');//getting the div of complete movies list
+	const listTitle = document.querySelector('#completeList .listTitle');//getting the title of complte movie list
+	const bannerTitle = document.querySelector('#banner .title span');//getting the title of the banner
+	const bannerImage = document.querySelector('#banner img');//getting the image of the banner
+	
+	listTitle.textContent=target;
+	bannerTitle.textContent=target;
+
+	hide(compDiv);
+
+	var compShow = compDiv.querySelectorAll('.'+target);
+
+	show(compShow);
+
+}
+
+function hide(div) {
+	var divSize = div.children.length;
+
+	for(var i=0;i<divSize;i++)
+	{
+		div.children[i].style.position = 'absolute';
+		div.children[i].style.opacity = '0';
+		div.children[i].style.width = '0%';
+
+	}
+}
+
+function show(div) {
+	var divSize = div.length;
+
+	for(var i=0;i<divSize;i++)
+	{
+		div[i].style.position = 'relative';
+		div[i].style.width = '100%';
+		div[i].style.opacity = '1';
+	}
+}
+
 

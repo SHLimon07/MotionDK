@@ -94,7 +94,7 @@ section relative to it */
 	text-transform: capitalize;
 }
 
-#genreList .genreName:hover
+#genreList .genreName:hover, #genreList .genreName.active
 {
 	background-color: #ccae62;
 }
@@ -120,7 +120,7 @@ section relative to it */
 {
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(auto-fit,150px);
+	grid-template-columns: repeat(auto-fill,150px);
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 	/* justify-content: space-between; */
@@ -132,6 +132,7 @@ section relative to it */
 {
 	margin: 0 auto;
 	width: 100%;
+	height: 100%;
 	transition: all linear 0.3s;
 }
 
@@ -139,6 +140,7 @@ section relative to it */
 {
 	border-radius: 5%;
 	width: 100%;
+	height: 225px;
 	object-fit: cover;
 }
 .card .title span
@@ -153,10 +155,11 @@ section relative to it */
 	letter-spacing: 3px;
 }
 
-.card .title .genre
+.card .title .dname
 {
 	color: #a8a8a8;
 	letter-spacing: 1px;
+	font-size: 14px;
 }
 
 /* making the layout responsive */
@@ -165,29 +168,26 @@ section relative to it */
 	
 	.ContentBody
 	{
-		display: flex;
+		display: grid;
+		grid-template-columns: 200px 10% 1fr;
 		justify-content: space-around;
+		grid-row-gap: 30px;
 	}
 	
 	.ContentBody #genreDiv
 	{
-		width: 200px;
+		grid-column: 1/2;
+		grid-row-start: 1;
+		grid-row-end: 4;
 	}
-	.ContentBody #movieListContainer
+	.ContentBody #recomendList, .ContentBody #completeList
 	{
-		width: 70%;
+		padding-top: 0;
+		grid-column: 3/4;
 	}
 	.listTitle
 	{
 		font-size: 20px;
-	}
-
-}
-@media screen and (max-width: 1080px ) and (min-width: 768px) {
-
-	.ContentBody #movieListContainer
-	{
-		width: 60%;
 	}
 
 }

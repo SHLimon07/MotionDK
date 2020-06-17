@@ -17,6 +17,7 @@
 	margin: 0;
 	scroll-behavior: smooth;
 	font-family: sans-serif;
+	transition: all linear 0.3s;
 }
 
 /* clearing the default styles on anchor tags and list tags */
@@ -102,7 +103,7 @@ body
 	text-transform: uppercase;
 }
 
-#navigation .navItem:hover a,#navigation .active a
+#navigation .navItem:hover a,#navigation .navItem.active a
 {
 	background: #fff;
 	color: var(--menuTextHoverColor);
