@@ -42,7 +42,8 @@ section relative to it */
 	display: block;
 	padding: 10px 0;
 	font-size: 3vw;
-	color: #d8d8d8;
+	color: #a8a8a8;
+	text-shadow: 1px 2px 5px #000;
 }
 
 /* creating an overlay over the banner image */
@@ -61,26 +62,38 @@ section relative to it */
 
 /* styling the text content section */
 
-.textContentBody
+.contentBody
 {
 	color: var(--menuTextColor);
 	/* padding: 10px; */
-	padding-top: 50px;
+	padding: 50px 0;
 }
 
-.textContentBody .textContent
+.contentBody .textContent
 {
 	padding: 10px;
 }
 
-.textContentBody .textContent .title
+.contentBody  .heading
+{
+	padding-bottom: 10px;
+	letter-spacing: 3px;
+	width: 100%;
+	margin: 20px 0;
+	text-transform: capitalize;
+	text-align: center;
+	color: rgba(204, 174, 98, 0.4);
+	-webkit-text-stroke: 0.3px rgba(204, 174, 98, 0.9);
+}
+
+.contentBody .textContent .title
 {
 	padding-bottom: 10px;
 	letter-spacing: 2px;
 	width: 80%;
 	margin-right: auto;
 }
-.textContentBody .textContent .text
+.contentBody .textContent .text
 {
 	opacity: 0.8;
 	font-size: 14px;
@@ -100,19 +113,19 @@ section relative to it */
 		justify-content: space-around;
 	}
 	
-	.textContentBody .textContent
+	.contentBody .textContent
 	{
 		padding-top: 30px;
 		width: 48%;
 		margin: 0 auto;
 	}
 
-	.textContentBody .textContent .title
+	.contentBody .textContent .title
 	{
 		margin: 0 	auto;
 	}
 
-	.textContentBody .textContent .text
+	.contentBody .textContent .text
 	{
 		width: 80%;
 	}
@@ -120,7 +133,7 @@ section relative to it */
 }
 @media screen and (max-width: 425px ) {
 	
-	.textContentBody .textContent .title , .textContentBody .textContent .text
+	.contentBody .textContent .title , .contentBody .textContent .text
 	{
 		width: 100%;
 	}
@@ -129,7 +142,6 @@ section relative to it */
 		padding: 5px 0;
 		font-size: 12px;
 		font-weight: bold;
-		color: #d8d8d8;
 	}
 }
 

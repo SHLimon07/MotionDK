@@ -48,11 +48,12 @@ body
 /* styles for the navbar */
 #navBar 
 {
+	position: sticky;
+	top: 0px;
+	z-index: 5;
 	width: 100%;
 	padding: 10px 0 ;
 	background: var(--navBarColor);
-	/* background: var(--navBarColor2); */
-	/* display: flex; */
 }
 
 #navBar .navMain
@@ -174,29 +175,23 @@ body
 	.nav .collapse
 	{
 		width: 100%;
-		transform: translateY(-130%);
+		/* transform: translateY(5%); */
+		height: 0;
 		left: 0;
 		position: absolute;
 		display: block;
 		text-align: center;
 		margin: 0 auto;
 		box-sizing: border-box;
-		z-index: -1;
 		background: var(--navBarColor);
-		opacity: 0.95;
-	}
-	.bringToTop
-	{
-		z-index: 1 !important ;
-	}
-	.sendBack
-	{
-		z-index: -2!important;
+		opacity: 0;
+		overflow: hidden;
 	}
 	/* this class will be toogled by javascript */
 	.navToogle
 	{
-		transform: translateY(5%)!important;
+		height:  150px !important;
+		opacity: 0.95 !important;
 	}
 
 	#navigation .navItem
