@@ -4,10 +4,11 @@
 /* The CSS variables */
 :root
 {
-	--navBarColor : #ccae62;
+	--navBarColor : linear-gradient(to top,#cea12f, #dcbd64, #ccae62);
+	/* --navBarColor2 : #ccae62; */
 	--menuTextColor: #e8e8e8;
 	--menuTextHoverColor: #ba1818;
-	--normalBackground: #181818; /* #487eb0; */
+	--normalBackground: linear-gradient(90deg, #181818,#272525, #181818); /* #487eb0; */
 }
 
 /* universal selector */
@@ -33,15 +34,7 @@ ul,li
 
 body 
 {
-	background-color: var(--normalBackground);
-
-	/* background: 
-	-webkit-linear-gradient(right, #787878, #181818 30vw, #181818 70vw, #787878 100vw);
-	background: 
-	-o-linear-gradient(right, #787878, #181818 30vw, #181818 70vw, #787878 100vw);
-	background: 
-	linear-gradient(to left, #787878, #181818 30vw, #181818 70vw, #787878 100vw);
-	background-repeat: no-repeat; */
+	background: var(--normalBackground);
 }
 /* Since the navbar is going to be everywhere, I am keeping it here */
 /* this class keeps everything inside it to the centre of the main div */
@@ -57,7 +50,8 @@ body
 {
 	width: 100%;
 	padding: 10px 0 ;
-	background-color: var(--navBarColor);
+	background: var(--navBarColor);
+	/* background: var(--navBarColor2); */
 	/* display: flex; */
 }
 
@@ -109,8 +103,48 @@ body
 	color: var(--menuTextHoverColor);
 }
 
+/*stylling the footer */
+
+#footer
+{
+	color: var(--menuTextColor);
+	text-shadow: 1px 2px 5px #787878;
+	background: var(--navBarColor);
+	text-align: center;  /* taking everything to the middle of thier div, even the logo */
+}
+
+#footer .logo img
+{
+	width: 180px;
+}
+
+#footer .container div
+{
+	padding: 20px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 /* Making the navBar responsive */
+@media screen and (min-width: 768px){
+	#footer .container
+	{
+		display: grid;
+		grid-template-columns: 20% 40% 40%;
+		width: 100%;
+	}
+
+	#footer .logo img
+	{
+		width: 120px;
+	}
+
+	#footer .container div
+	{
+		padding: 10px 0;
+	}
+}
 @media screen and (max-width: 768px) {
 	
 	 /*hides the menu toogling button on bigger screens*/
@@ -133,7 +167,7 @@ body
 	.menuHidden:hover
 	{
 		background-color: #fff;
-	color: var(--menuTextHoverColor);
+		color: var(--menuTextHoverColor);
 	}
 
 	/* thiss css applies when the items are collapsed or on bigger sceerns */
@@ -148,7 +182,8 @@ body
 		margin: 0 auto;
 		box-sizing: border-box;
 		z-index: -1;
-		background-color: var(--navBarColor);
+		background: var(--navBarColor);
+		opacity: 0.95;
 	}
 	.bringToTop
 	{

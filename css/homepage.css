@@ -110,14 +110,13 @@ image without any transition */
 	border: none;
 	outline: none;
 	cursor: pointer;
-	z-index: 1;
+	z-index: 0;
 }
 
 /* the carousel part is done */
 
 #lastSection
 {
-	background-color: var(--normalBackground);
 	color: var(--menuTextColor);
 	display: flex;
 	padding: 30px 0;

@@ -69,7 +69,6 @@ section relative to it */
 
 .ContentBody
 {
-	background-color: var(--normalBackground);
 	color: var(--menuTextColor);
 	/* padding: 10px; */
 	padding-top: 50px;

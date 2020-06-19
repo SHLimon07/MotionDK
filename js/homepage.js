@@ -27,9 +27,6 @@ gotoFirst();
 //Now initializing the atributes using fetched data
 async function homePageMain()
 {
-	//hidding the carousel div untill the data is fetched
-	carousel.style.display = 'none';
-
 	//first I have to fetch the data
 	await fetching();
 
@@ -48,9 +45,6 @@ async function homePageMain()
 
 	//setting the attributes of the html carousel elements
 	carouselInit(carouselData);
-
-	//showing the carousel div after the data is fetched
-	carousel.style.display = 'flex';
 
 	//starting the autoplay 
 	setInterval(autoPlay, 2500);
