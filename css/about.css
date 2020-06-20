@@ -7,11 +7,6 @@ section relative to it */
 	width: 70vw;
 }
 
-.textContentBody
-{
-	background-color: var(--normalBackground);
-}
-
 #banner
 {
 	width: 100%;
