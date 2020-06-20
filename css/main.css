@@ -9,6 +9,7 @@
 	--menuTextColor: #e8e8e8;
 	--menuTextHoverColor: #ba1818;
 	--normalBackground: linear-gradient(90deg, #181818,#272525, #181818); /* #487eb0; */
+	--lightText: #a8a8a8;
 }
 
 /* universal selector */

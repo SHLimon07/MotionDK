@@ -47,6 +47,9 @@ async function moviesPageMain()
 	//initialing with drama genre
 	filterList('drama',genreListDiv);
 
+	//setting event listener to the cards
+	setCards();
+
 	//gets the genre to be filterd
 	getTarget();
 }
@@ -153,6 +156,9 @@ function createCard(data,parent,div) {
 	
 	var card = document.createElement('div');
 	card.classList.add('card');
+	var link = document.createElement('a');
+	// link.href = "../pages/movieDetails.html";
+	link.href = "#";
 	var image = document.createElement('img');
 	image.src = "../images/Movies/CardImage/" + data.gsx$photo.$t;
 	var title = document.createElement('div');
@@ -167,8 +173,9 @@ function createCard(data,parent,div) {
 
 	//appending the elements to its parent
 	parent.appendChild(card);
-	card.appendChild(image);
-	card.appendChild(title);
+	card.appendChild(link);
+	link.appendChild(image);
+	link.appendChild(title);
 	title.appendChild(name);
 	title.appendChild(dname);
 
@@ -183,6 +190,27 @@ function addGenreClasses (element,list) {
 	{
 		element.classList.add(list[i]);
 	}
+}
+
+function setCards() {
+	
+	const cards = document.querySelectorAll('.card a');
+	for(var i=0;i<cards.length;i++)
+	{
+		cards[i].addEventListener('click', function(){
+			
+			var name = this.querySelector('.name').textContent;
+			var url = getMovieUrl(name);
+			this.href = url;
+		});
+	}
+}
+
+function getMovieUrl(name) {
+	
+	var url = '../pages/movieDetails.html' + '?name=' + name;
+	return url;
+
 }
 
 function getTarget() {

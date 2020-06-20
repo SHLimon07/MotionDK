@@ -120,6 +120,7 @@
 
 .card .title .name
 {
+	color: var(--menuTextColor);
 	letter-spacing: 3px;
 }
 

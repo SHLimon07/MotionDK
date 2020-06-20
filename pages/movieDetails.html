@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>movie Details - Motion</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../css/movieDetails.css">
+	</head>
+	<body>
+		<!-- starting the navbar  -->
+		<div id="navBar">
+			<div class="container"> <!--this keeps everything at the center of the screen -->
+				<div class="navMain">
+					<div class="logo">
+						<a href="../index.html" class="">
+							<img src="../images/logo/logos-01.png" alt="">
+						</a>
+					</div>
+					<div class="nav">
+						<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+						<ul id="navigation" class="collapse">
+							<li class="navItem"><a href="../index.html">Home</a></li>
+							<li class="navItem"><a href="about.html">About</a></li>
+							<li class="navItem"><a href="movies.html">Movies</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Ending of navBar -->
+
+		<div class="container">
+			<div class="contentBody">
+				<div class="quickInfo">
+					<div class="image">
+						<img src="" alt="">
+					</div>
+					<div class="info">
+						<p class="name"></p>
+						<p class="genres"></p>
+						<p class="year"></p>
+						<p class="duration"></p>
+					</div>
+				</div>
+				<div class="details">
+
+					<div class="director">
+						<span class="title">director: </span>
+						<span class="text"></span>
+					</div>
+					
+					<div class="actors">
+						<span class="title">main actors: </span>
+						<span class="text"></span>
+					</div>
+					
+					<div class="description">
+						<span class="title">description: </span>
+						<span class="text"></span>
+					</div>
+					
+					<div class="review">
+						<span class="title">review: </span>
+						<span class="text"></span>
+					</div>
+					
+					<div class="reviewBy">
+						<span class="title">review by:</span>
+						<span class="text"></span>
+					</div>
+					<div class="ageRating">
+						<span class="title">age rating: </span>
+						<span class="text"></span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- footer section -->
+		<div id="footer">
+			<div class="container">
+				<div class="logo">
+					<img src="../images/logo/logos-01.png" alt="">
+				</div>
+				<div class="copyright">
+					<span>Copyright &#169 2020 Motion.co. All rights resereved</span>
+				</div>
+				<div class="disclaimer">
+					<span>Disclaimer: This site does not store any data on its server.</span>
+				</div>
+			</div>
+		</div>
+		<!-- footer section done -->
+
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/movieDetails.js"></script>
+	</body>
+</html>
