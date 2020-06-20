@@ -2,10 +2,6 @@
 //The data are taken from this google sheet - https://docs.google.com/spreadsheets/d/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/edit#gid=0
 //And the data are fetched using this link - https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json
 
-//data variables
-var dataSheet;
-var topMovies;
-
 //calling the main funtion
 topMoviesPageMain();
 
@@ -16,8 +12,14 @@ topMoviesPageMain();
 async function topMoviesPageMain()
 {
 
+	//getting the movie name 
+	var name = getName();
+
+	//setting the tilte according to the searched name
+	setTitle(name);
+
 	//first I have to fetch the data
-	await fetching();
+	var dataSheet = await fetching();
 
 	//since I only need the enties
 	dataSheet = dataSheet.feed.entry;
@@ -26,21 +28,44 @@ async function topMoviesPageMain()
 	dataSheet = convertGenre(dataSheet);
 
 	//getting the list of top movies
-	topMovies = getTopMovies(dataSheet);
+	var searchResults = getSearchResults(dataSheet,name);
 
-	//creating the movie cards
-	createMovieCards(topMovies,'topList',topMovies.length);
+	if(searchResults.length == 0)
+		noResult();
 
-	//setting event listener to the cards
-	setCards();
+	else
+	{
+		//creating the movie cards
+		createMovieCards(searchResults,'searchList',searchResults.length);
 
+		//setting event listener to the cards
+		setCards();
+	}
+	
+
+}
+
+function getName () {
+	
+	var url = window.location;
+	var usp = new URLSearchParams(url.search);
+
+	return usp.get('name').toString();
+
+}
+
+function setTitle (name) {
+	
+	document.title = "'" + name + "'" + ' Search results - Motion';	
 }
 
 async function fetching () {
 	//this function fetches the api from google sheet as json 
 
 	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
-	dataSheet = await response.json();
+	var dataSheet = await response.json();
+
+	return dataSheet;
 }
 
 
@@ -54,17 +79,28 @@ function convertGenre(data) {
 	return data;
 }
 
-function getTopMovies(data) {
+function getSearchResults(dataSheet,name) {
 
 	var array = [];
 	
-	for(var i=0;i<data.length;i++)
+	name = name.toLowerCase();
+
+	for(var i=0;i<dataSheet.length;i++)
 	{
-		if(data[i].gsx$topmovie.$t == 'TRUE')
-			array.push(data[i]);
+		var temp = dataSheet[i].gsx$name.$t;
+		temp = temp.toLowerCase();
+
+		var nameMatch = temp.match(name);
+
+		if(nameMatch != null)
+			array.push(dataSheet[i]);
 	}
 
 	return array;
+}
+
+function noResult (argument) {
+	document.querySelector('.noResult').style.display = 'block'; 
 }
 
 function createMovieCards(data,div,length) {

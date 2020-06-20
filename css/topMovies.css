@@ -104,6 +104,11 @@
 	transition: all linear 0.3s;
 }
 
+.card:hover
+{
+	transform: scale(0.9);
+}
+
 .card img
 {
 	border-radius: 5%;

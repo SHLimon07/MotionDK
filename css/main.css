@@ -86,7 +86,14 @@ body
 	letter-spacing: 3px;
 }
 
-#navigation .navItem a
+#navigation .navItem
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#navigation .navItem .navLink
 {
 	padding: 10px 10px;
 	color: var(--menuTextColor);
@@ -99,7 +106,38 @@ body
 	text-transform: uppercase;
 }
 
-#navigation .navItem:hover a,#navigation .navItem.active a
+#navigation .searchBox form
+{
+	margin: 0 auto;
+	width: 160px;
+	border-radius: 20px;
+	background: #e8e8e8;
+	overflow: hidden;
+	display: flex;
+	padding: 5px;
+	box-sizing: border-box;
+	justify-content: space-between;
+}
+
+#navigation .search
+{
+	padding-left: 10px;
+	color: var(--menuTextHoverColor);
+	outline: none;
+	border: none;
+	background: none;
+	width: 75%;
+}
+
+#navigation .searchBtn
+{
+	cursor: pointer;
+	color: var(--menuTextHoverColor);
+	border: none;
+	background: none;
+}
+
+#navigation .navItem:hover .navLink,#navigation .navItem.active a
 {
 	background: #fff;
 	color: var(--menuTextHoverColor);
@@ -176,7 +214,7 @@ body
 	.nav .collapse
 	{
 		width: 100%;
-		transform: translateY(5%);
+		transform: translateY(4%);
 		height: 0;
 		left: 0;
 		position: absolute;
@@ -191,12 +229,21 @@ body
 	/* this class will be toogled by javascript */
 	.navToogle
 	{
-		height:  150px !important;
+		height:  225px !important;
 		opacity: 0.95 !important;
 	}
 
 	#navigation .navItem
 	{
-		margin: 25px 0;
+		margin-top: 15px ;
 	}
+}
+
+@media screen and (max-width: 425px) {
+	
+	#navigation .navItem .navLink ,.nav .menuHidden
+	{
+		font-size: 14px;
+	}
+
 }

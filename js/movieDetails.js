@@ -11,6 +11,11 @@ topMoviesPageMain();
 //Now initializing the atributes using fetched data
 async function topMoviesPageMain()
 {
+	//getting the movie name 
+	var name = getName();
+
+	//setting the tilte according to the movie name
+	setTitle(name);
 
 	//first I have to fetch the data
 	var dataSheet = await fetching();
@@ -18,8 +23,6 @@ async function topMoviesPageMain()
 	//since I only need the enties
 	dataSheet = dataSheet.feed.entry;
 
-	//getting the movie name 
-	var name = getName();
 
 	//getting the movie data
 	var movieData = getMovieData(dataSheet,name);
@@ -31,14 +34,6 @@ async function topMoviesPageMain()
 
 }
 
-async function fetching () {
-	//this function fetches the api from google sheet as json 
-
-	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
-	var dataSheet = await response.json();
-	return dataSheet;
-}
-
 function getName () {
 	
 	var url = window.location;
@@ -46,6 +41,20 @@ function getName () {
 
 	return usp.get('name').toString();
 
+}
+
+function setTitle (name) {
+	
+	document.title = name + ' - Motion';
+	
+}
+
+async function fetching () {
+	//this function fetches the api from google sheet as json 
+
+	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
+	var dataSheet = await response.json();
+	return dataSheet;
 }
 
 function getMovieData (dataSheet, name) {

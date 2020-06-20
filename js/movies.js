@@ -157,7 +157,6 @@ function createCard(data,parent,div) {
 	var card = document.createElement('div');
 	card.classList.add('card');
 	var link = document.createElement('a');
-	// link.href = "../pages/movieDetails.html";
 	link.href = "#";
 	var image = document.createElement('img');
 	image.src = "../images/Movies/CardImage/" + data.gsx$photo.$t;

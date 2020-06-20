@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Movies - Motion</title>
+		<title>Search Results - Motion</title>
 		<link rel="stylesheet" href="../css/main.css">
-		<link rel="stylesheet" href="../css/movies.css">
+		<link rel="stylesheet" href="../css/searches.css">
 		<link rel="stylesheet" href="../css/all.min.css">
 	</head>
 	<body>
@@ -16,7 +16,7 @@
 			<div class="navMain">
 				<div class="logo">
 					<a href="../index.html" class="">
-						<img src="../images/logo/logos-01.png" alt="" title="Home">
+						<img src="../images/logo/logos-01.png" alt="">
 					</a>
 				</div>
 				<div class="nav">
@@ -24,7 +24,7 @@
 					<ul id="navigation" class="collapse">
 						<li class="navItem"><a class="navLink" href="../index.html">Home</a></li>
 						<li class="navItem"><a class="navLink" href="about.html">About</a></li>
-						<li class="navItem active"><a class="navLink" href="movies.html">Movies</a></li>
+						<li class="navItem"><a class="navLink" href="movies.html">Movies</a></li>
 						<li class="navItem searchBox">
 							<form action="searches.html">
 								<input name="name" class="search" type="text" placeholder="Movie name">
@@ -41,44 +41,24 @@
 	
 	<!-- Everything inside a container -->
 	<div class="container">
-		<!-- Banner Image -->
-		<div id="banner">
-			<img src="" alt="">
-			<div class="title">
-				<span class="genre">Drama</span>
-			</div>
-		</div>
-		<!-- banner section done -->
 		
-
-		<!-- The list of movies and genre inside this -->
 		<div class="ContentBody">
+
 			
-			<div id="recomendList" >
-				<span class="listTitle">Recomended</span>
-
-				<div class="movieList">
-					<!-- elements will be added by javascript, using data -->
-				</div>
-			</div>
-
-			<div id="genreDiv">
-				<span class="listTitle">Genre</span>
-				<div id="genreList">
-					<!-- elements will be added by javascript, using data -->
-				</div>
-			</div>
-
-			<div id="completeList">
-
-				<span class="listTitle">Drama</span>
+			<div id="searchList" >
+				<span class="listTitle">Search results</span>
 				
+				<div class="noResult">
+					<h1>No Results found</h1>
+				</div>
+
 				<div class="movieList">
 					<!-- elements will be added by javascript, using data -->
 				</div>
 			</div>
 			
 		</div>
+		
 	</div>
 
 	<!-- footer section -->
@@ -97,6 +77,6 @@
 	</div>
 
 	<script type="text/javascript" src="../js/common.js"></script>
-	<script type="text/javascript" src="../js/movies.js"></script>
+	<script type="text/javascript" src="../js/searches.js"></script>
 </body>
 </html>

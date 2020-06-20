@@ -6,6 +6,7 @@
 		<title>History of Danish Films - Motion</title>
 		<link rel="stylesheet" href="../css/main.css">
 		<link rel="stylesheet" href="../css/about.css">
+		<link rel="stylesheet" href="../css/all.min.css">
 	</head>
 	<body>
 		
@@ -21,9 +22,16 @@
 				<div class="nav">
 					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
 					<ul id="navigation" class="collapse">
-						<li class="navItem"><a href="../index.html">Home</a></li>
-						<li class="navItem"><a href="about.html">About</a></li>
-						<li class="navItem"><a href="movies.html">Movies</a></li>
+						<li class="navItem"><a class="navLink" href="../index.html">Home</a></li>
+						<li class="navItem"><a class="navLink" href="about.html">About</a></li>
+						<li class="navItem"><a class="navLink" href="movies.html">Movies</a></li>
+						<li class="navItem searchBox">
+							<form action="searches.html">
+								<input name="name" class="search" type="text" placeholder="Movie name">
+								<button type="submit" class="searchBtn"><i class="fas fa-search"></i></button>
+								<!-- <a class="searchBtn" href="pages/movies.html"><i class="fas fa-search"></i></a> -->
+							</form>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -86,6 +94,8 @@
 			</div>
 		</div>
 	</div>
+	<!-- footer section done -->
+
 	<script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
