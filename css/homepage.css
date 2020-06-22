@@ -13,7 +13,7 @@
 	z-index: -2; /* so that it stays behind the dropdown menu */
 	display: flex; 
 	width: 100vw;
-	transition: all ease-out 0.6s; /* to make the slide effect */
+	transition: all ease-out 0.6s; /* to make the slide effect smooth */
 }
 
 /* this class is used when the slider comes back to the first of last 
@@ -27,8 +27,9 @@ image without any transition */
 {
 	position: relative;
 	min-width: 100vw;
-  	height: 90vh;
-  	overflow-y: hidden;
+  	height: 50vw; /* vw keeps the height of the banner relative to the width of the screen */
+  	max-height: 95vh;
+  	overflow: hidden;
 }
 
 /* this creates a dark overlay */
@@ -40,16 +41,13 @@ image without any transition */
 	top: 0;
 	left: 0;
 	height: 100%;
-	background-color: #000;
+	background: var(--darkOverLay);
 	opacity: 0.5;
 }
 
 /* keeping the image in a good position */
 #carousel img
 {	
-	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
   	object-fit: cover;
@@ -73,7 +71,6 @@ image without any transition */
 	text-transform: capitalize;
 	font-weight: bold;
 	letter-spacing: 5px;
-	/* word-spacing: 8px; */
 }
 
 /* movie genre */
@@ -115,14 +112,14 @@ image without any transition */
 
 /* the carousel part is done */
 
-#lastSection
+#usefulLinks
 {
 	color: var(--menuTextColor);
 	display: flex;
 	padding: 30px 0;
 	justify-content: space-between;
 }
-#lastSection .generalLinks
+#usefulLinks .uLink
 {
 	padding: 30px;
 	text-align: center;
@@ -131,32 +128,20 @@ image without any transition */
 	margin: 0 auto;
 }
 
-#lastSection a
+#usefulLinks a
 {
 	color: var(--menuTextColor);
 }
 
-#lastSection a:hover
+#usefulLinks a:hover
 {
-	color: #e8e8e8;
 	color: var(--menuTextHoverColor);
 }
 
 /* now making it responsive */
-@media screen and (max-width: 1080px ) {
-	
-	#carousel .carouselItem
-	{	
-	  	height: 65vh;
-	}
-}
 @media screen and (max-width: 768px ) {
 	
-	#carousel .carouselItem
-	{	
-	  	height: 45vh;
-	}
-	#lastSection
+	#usefulLinks
 	{
 		display: block;
 		padding: 0;
@@ -172,10 +157,6 @@ image without any transition */
 }
 @media screen and (max-width: 425px ) {
 	
-	#carousel .carouselItem
-	{	
-	  	height: 35vh;
-	}
 	#carousel .carouselItem .title .name
 	{
 		font-size: 18px;
@@ -183,6 +164,5 @@ image without any transition */
 	#carousel .carouselItem .title .genre
 	{
 		display: none;
-		font-size: 14px;
 	}
 }

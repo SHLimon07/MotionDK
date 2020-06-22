@@ -30,6 +30,7 @@ async function topMoviesPageMain()
 	//getting the list of top movies
 	var searchResults = getSearchResults(dataSheet,name);
 
+	//checking if there is no result
 	if(searchResults.length == 0)
 		noResult();
 
@@ -92,7 +93,7 @@ function getSearchResults(dataSheet,name) {
 
 		var nameMatch = temp.match(name);
 
-		if(nameMatch != null)
+		if(nameMatch != null)//if there is atleast a match
 			array.push(dataSheet[i]);
 	}
 
@@ -100,6 +101,8 @@ function getSearchResults(dataSheet,name) {
 }
 
 function noResult (argument) {
+
+	//displaying the no result notation
 	document.querySelector('.noResult').style.display = 'block'; 
 }
 

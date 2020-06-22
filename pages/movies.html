@@ -21,16 +21,18 @@
 					</a>
 				</div>
 				<div class="nav">
+					
+					<!-- this element is only displayed when screen size is atmost 768px -->
 					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+					
 					<ul id="navigation" class="collapse">
 						<li class="navItem"><a class="navLink" href="../index.html">Home</a></li>
 						<li class="navItem"><a class="navLink" href="about.html">About</a></li>
 						<li class="navItem active"><a class="navLink" href="movies.html">Movies</a></li>
 						<li class="navItem searchBox">
-							<form action="searches.html">
+							<form action="searches.html"> <!-- if the form is submitted , it take to this link with search parrams -->
 								<input name="name" class="search" type="text" placeholder="Movie name">
 								<button type="submit" class="searchBtn"><i class="fas fa-search"></i></button>
-								<!-- <a class="searchBtn" href="pages/movies.html"><i class="fas fa-search"></i></a> -->
 							</form>
 						</li>
 					</ul>
@@ -46,14 +48,14 @@
 		<div id="banner">
 			<img src="" alt="">
 			<div class="title">
-				<span class="genre">Drama</span>
+				<span class="genre"></span>
 			</div>
 		</div>
 		<!-- banner section done -->
 		
 
 		<!-- The list of movies and genre inside this -->
-		<div class="ContentBody">
+		<div class="contentBody">
 			
 			<div id="recomendList" >
 				<span class="listTitle">Recomended</span>

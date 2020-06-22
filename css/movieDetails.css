@@ -11,8 +11,7 @@ section relative to it */
 
 .contentBody
 {
-	color: var(--lightText);
-	padding: 50px 0;
+	color: var(--darkText);
 }
 
 /* styling the quick info section */

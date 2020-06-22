@@ -21,16 +21,18 @@
 					</a>
 				</div>
 				<div class="nav">
+					
+					<!-- this element is only displayed when screen size is atmost 768px -->
 					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+					
 					<ul id="navigation" class="collapse">
 						<li class="navItem"><a class="navLink" href="../index.html">Home</a></li>
 						<li class="navItem"><a class="navLink" href="about.html">About</a></li>
 						<li class="navItem"><a class="navLink" href="movies.html">Movies</a></li>
 						<li class="navItem searchBox">
-							<form action="searches.html">
+							<form action="searches.html"> <!-- if the form is submitted , it take to this link with search parrams -->
 								<input name="name" class="search" type="text" placeholder="Movie name">
 								<button type="submit" class="searchBtn"><i class="fas fa-search"></i></button>
-								<!-- <a class="searchBtn" href="pages/movies.html"><i class="fas fa-search"></i></a> -->
 							</form>
 						</li>
 					</ul>
@@ -57,6 +59,7 @@
 			<div class="heading">
 				<h1>Film History</h1>
 			</div>
+
 			<div class="textContentBody">
 				<div class="textContent">
 					<h3 class="title">Beginning: </h3>
@@ -71,6 +74,8 @@
 					</p>
 				</div>
 			</div>
+			
+			<!-- it is kept out of the textContent Body , since it will not be display flexed in bigger screens -->
 			<div class="textContent" style = "width: 90%">
 				<h3 class="title" style = "width: 100%">The 21st Century: </h3>
 				<p class="text" style = "width: 100%">
@@ -81,6 +86,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- footer section -->
 	<div id="footer">
 		<div class="container">

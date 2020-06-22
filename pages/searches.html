@@ -21,16 +21,18 @@
 					</a>
 				</div>
 				<div class="nav">
+					
+					<!-- this element is only displayed when screen size is atmost 768px -->
 					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+					
 					<ul id="navigation" class="collapse">
 						<li class="navItem"><a class="navLink" href="../index.html">Home</a></li>
 						<li class="navItem"><a class="navLink" href="about.html">About</a></li>
 						<li class="navItem"><a class="navLink" href="movies.html">Movies</a></li>
 						<li class="navItem searchBox">
-							<form action="searches.html">
+							<form action="searches.html"> <!-- if the form is submitted , it take to this link with search parrams -->
 								<input name="name" class="search" type="text" placeholder="Movie name">
 								<button type="submit" class="searchBtn"><i class="fas fa-search"></i></button>
-								<!-- <a class="searchBtn" href="pages/movies.html"><i class="fas fa-search"></i></a> -->
 							</form>
 						</li>
 					</ul>
@@ -43,12 +45,13 @@
 	<!-- Everything inside a container -->
 	<div class="container">
 		
-		<div class="ContentBody">
+		<div class="contentBody">
 
 			
 			<div id="searchList" >
 				<span class="listTitle">Search results</span>
 				
+				<!-- initially it is styled display:none; when there is no results it will show up -->
 				<div class="noResult">
 					<h1>No Results found</h1>
 				</div>

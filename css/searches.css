@@ -3,10 +3,6 @@
 	width: 70vw;
 }
 
-.textContentBody
-{
-	background-color: var(--normalBackground);
-}
 
 #banner
 {
@@ -58,11 +54,6 @@
 
 
 /* styling content body */
-.ContentBody
-{
-	color: var(--menuTextColor);
-	padding-top: 50px;
-}
 
 #searchList  .noResult
 {
@@ -103,7 +94,6 @@
 	grid-template-columns: repeat(auto-fill,250px);
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	/* justify-content: space-between; */
 	position: relative;
 	overflow: hidden;
 }
@@ -143,7 +133,7 @@
 
 .card .title .gname
 {
-	color: #a8a8a8;
+	color: var(--darkText);
 	letter-spacing: 1px;
 	font-size: 14px;
 	text-transform: capitalize;

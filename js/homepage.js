@@ -2,24 +2,17 @@
 
 // Getting the elements from HTML
 const carousel = document.getElementById('carousel');
-const carouselItems = Array.from(carousel.children);
-const size = carouselItems.length;
+const size = carousel.children.length;
 
 //fetching data by each file, since many browsers don't support import/export
 //The data are taken from this google sheet - https://docs.google.com/spreadsheets/d/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/edit#gid=0
 //And the data are fetched using this link - https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json
 
-//data variables
-var dataSheet;
-var yearSortedData;
-var carouselData = [];
 
 //function calls
 
 //calling the main function
 homePageMain();
-//since initialy the slider is on the postion of the last clone
-gotoFirst();
 
 
 
@@ -28,24 +21,27 @@ gotoFirst();
 async function homePageMain()
 {
 	//first I have to fetch the data
-	await fetching();
+	var dataSheet = await fetching();
 
 	//since I only need the enties
 	dataSheet = dataSheet.feed.entry;
 
 	//sorting the data according to year
 	//the carousel will show the latest 5 movies 
-	yearSortedData =  sortData(dataSheet);
+	var yearSortedData =  sortData(dataSheet);
 
 	//convert the coma separated genre values to an array
 	yearSortedData = convertGenre(yearSortedData);
 
 	//getting the latest 5 movies from the sorted data
-	carouselData = getLatestData(yearSortedData,5);
+	var carouselData = getLatestData(yearSortedData,5);
 
 	//setting the attributes of the html carousel elements
 	carouselInit(carouselData);
 
+	//since initialy the slider is on the postion of the last clone
+	gotoFirst();
+	
 	//starting the autoplay 
 	setInterval(autoPlay, 2500);
 }
@@ -56,7 +52,9 @@ async function fetching () {
 	//this function fetches the api from google sheet as json 
 
 	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
-	dataSheet = await response.json();
+	var dataSheet = await response.json();
+
+	return dataSheet;
 }
 
 function sortData (data) {
@@ -109,11 +107,10 @@ function carouselInit(data) {
 	
 	for(i=0;i<size;i++)
 	{
-		// console.log()
-		carousel.children[i].children[1].src="images/Movies/BannerImage/" + data[i].gsx$photo.$t;
-		// console.log(carousel.children[i].children[0]);
-		carousel.children[i].children[0].children[0].textContent=data[i].gsx$name.$t;
-		carousel.children[i].children[0].children[1].textContent=data[i].gsx$genre.$t[0];
+		var cItem = carousel.children[i]; //selecting the carousel item
+		cItem.querySelector('img').src="images/Movies/BannerImage/" + data[i].gsx$photo.$t;
+		cItem.querySelector('.name').textContent=data[i].gsx$name.$t;
+		cItem.querySelector('.genre').textContent=data[i].gsx$genre.$t[0];
 	}
 }
 
@@ -172,12 +169,11 @@ function checkIf()
 {
 	carousel.addEventListener('transitionend',function()
 	{
-		if(carouselItems[carouselCounter].id=="firstClone")
+		if(carousel.children[carouselCounter].id=="firstClone")
 		{
-			
 			gotoFirst();//to create the loop effect
 		}
-		else if(carouselItems[carouselCounter].id=="lastClone")
+		else if(carousel.children[carouselCounter].id=="lastClone")
 		{
 			gotoLast();//to create the loop effect
 		}

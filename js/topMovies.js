@@ -2,13 +2,8 @@
 //The data are taken from this google sheet - https://docs.google.com/spreadsheets/d/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/edit#gid=0
 //And the data are fetched using this link - https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json
 
-//data variables
-var dataSheet;
-var topMovies;
-
 //calling the main funtion
 topMoviesPageMain();
-
 
 
 
@@ -17,7 +12,7 @@ async function topMoviesPageMain()
 {
 
 	//first I have to fetch the data
-	await fetching();
+	var dataSheet =  await fetching();
 
 	//since I only need the enties
 	dataSheet = dataSheet.feed.entry;
@@ -26,7 +21,7 @@ async function topMoviesPageMain()
 	dataSheet = convertGenre(dataSheet);
 
 	//getting the list of top movies
-	topMovies = getTopMovies(dataSheet);
+	var topMovies = getTopMovies(dataSheet);
 
 	//creating the movie cards
 	createMovieCards(topMovies,'topList',topMovies.length);
@@ -40,7 +35,9 @@ async function fetching () {
 	//this function fetches the api from google sheet as json 
 
 	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
-	dataSheet = await response.json();
+	var dataSheet = await response.json();
+
+	return dataSheet;
 }
 
 

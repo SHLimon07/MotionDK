@@ -2,11 +2,7 @@
 //The data are taken from this google sheet - https://docs.google.com/spreadsheets/d/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/edit#gid=0
 //And the data are fetched using this link - https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json
 
-//data variables
-var dataSheet;
-var yearSortedData;
-var genreList = [];
-
+//html elements
 const genreListDiv = document.getElementById('genreList');
 
 //calling the main funtion
@@ -20,20 +16,20 @@ async function moviesPageMain()
 {
 
 	//first I have to fetch the data
-	await fetching();
+	var dataSheet =  await fetching();
 
 
 	//since I only need the enties
 	dataSheet = dataSheet.feed.entry;
 
 	//sorting the data according to year
-	yearSortedData =  sortData(dataSheet);
+	var yearSortedData =  sortData(dataSheet);
 
 	//convert the coma separated genre values to an array
 	dataSheet = convertGenre(dataSheet);
 
 	//getting the set of unique genres from the data sheet
-	genreList = createGenreList(dataSheet);
+	var genreList = createGenreList(dataSheet);
 
 	//initializing the genreList in html
 	genreListInit(genreList);
@@ -45,20 +41,21 @@ async function moviesPageMain()
 	createMovieCards(yearSortedData,'recomendList',3)
 
 	//initialing with drama genre
-	filterList('drama',genreListDiv);
+	filterList(dataSheet,'drama',genreListDiv);
 
 	//setting event listener to the cards
 	setCards();
 
 	//gets the genre to be filterd
-	getTarget();
+	getTarget(dataSheet);
 }
 
 async function fetching () {
 	//this function fetches the api from google sheet as json 
 
 	const response = await fetch('https://spreadsheets.google.com/feeds/list/1vnKwmmsSAnZKvp_B1aGO3OcEXAQ1NMiuLv3yn-m9qPg/od6/public/values?alt=json');
-	dataSheet = await response.json();
+	var dataSheet = await response.json();
+	return dataSheet;
 }
 
 
@@ -212,7 +209,7 @@ function getMovieUrl(name) {
 
 }
 
-function getTarget() {
+function getTarget(dataSheet) {
 	
 	genreSize = genreListDiv.children.length;
 
@@ -222,12 +219,12 @@ function getTarget() {
 		genreListDiv.children[i].addEventListener('click',function(){
 
 			var target = this.getAttribute('id');
-			filterList(target,genreListDiv);
+			filterList(dataSheet,target,genreListDiv);
 		});
 	} 
 }
 
-function filterList(target,parent)
+function filterList(dataSheet,target,parent)
 {
 	for(var i=0;i<parent.children.length;i++)
 	{

@@ -22,16 +22,18 @@
 					</a>
 				</div>
 				<div class="nav">
+					
+					<!-- this element is only displayed when screen size is atmost 768px -->
 					<span id="menu" onclick="toogleCollapse()" class="menuHidden">MENU</span>
+					
 					<ul id="navigation" class="collapse">
 						<li class="navItem active"><a class="navLink" href="index.html">Home</a></li>
 						<li class="navItem"><a class="navLink" href="pages/about.html">About</a></li>
 						<li class="navItem"><a class="navLink" href="pages/movies.html">Movies</a></li>
 						<li class="navItem searchBox">
-							<form action="pages/searches.html">
+							<form action="pages/searches.html">  <!-- if the form is submitted , it take to this link with search parrams -->
 								<input name="name" class="search" type="text" placeholder="Movie name">
 								<button type="submit" class="searchBtn"><i class="fas fa-search"></i></button>
-								<!-- <a class="searchBtn" href="pages/movies.html"><i class="fas fa-search"></i></a> -->
 							</form>
 						</li>
 					</ul>
@@ -45,6 +47,7 @@
 	<!-- The carousel silder -->
 	<div id="carouselMain">
 		
+		<!-- the inner properties will be added by javascript using the data file -->
 		<div id="carousel">
 
 			<!--Cloning the last slide to the first for sliding effect  -->
@@ -106,7 +109,8 @@
 			</div>
 
 		</div>
-
+		
+		<!-- icons added from fontawesome -->
 		<button id="prevbtn" class="carouselBtn" onclick="gotoPrev()"><i class="fas fa-chevron-left"></i></button>
 		<button id="nextbtn" class="carouselBtn" onclick="gotoNext()"><i class="fas fa-chevron-right"></i></button>
 
@@ -115,15 +119,15 @@
 
 	<!-- the bottom section with general links -->
 
-	<div id="lastSection">
+	<div id="usefulLinks">
 		
-		<div class="generalLinks">
+		<div class="uLink">
 			<a href="pages/history.html" class="">Danish film history</a>
 		</div>
-		<div class="generalLinks">
+		<div class="uLink">
 			<a href="pages/topMovies.html" class="">Top movies</a>
 		</div>
-		<div class="generalLinks">
+		<div class="uLink">
 			<a href="pages/movies.html" class="">Drama</a>
 			<span>: most popular danish genre</span>
 		</div>

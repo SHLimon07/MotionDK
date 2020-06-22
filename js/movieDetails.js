@@ -27,8 +27,6 @@ async function topMoviesPageMain()
 	//getting the movie data
 	var movieData = getMovieData(dataSheet,name);
 
-	console.log(movieData);
-
 	//Initializing the html elements
 	initElements(movieData);
 
@@ -45,8 +43,7 @@ function getName () {
 
 function setTitle (name) {
 	
-	document.title = name + ' - Motion';
-	
+	document.title = name + ' - Motion';	
 }
 
 async function fetching () {

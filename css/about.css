@@ -57,13 +57,6 @@ section relative to it */
 
 /* styling the text content section */
 
-.contentBody
-{
-	color: var(--menuTextColor);
-	/* padding: 10px; */
-	padding: 50px 0;
-}
-
 .contentBody .textContent
 {
 	padding: 10px;
